@@ -7,6 +7,7 @@ import { getProductBySlug, getProducts } from "@/lib/products/service";
 import { ProductGallery } from "@/components/product/ProductGallery";
 import { ProductInfo } from "@/components/product/ProductInfo";
 import { ProductCard } from "@/components/catalog/ProductCard";
+import { CyberMesh } from "@/components/ui/CyberMesh";
 
 interface ProductPageProps {
   params: {
@@ -76,8 +77,9 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
     .slice(0, 3);
 
   return (
-    <div className="py-8 sm:py-14 bg-dark-950 min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <div className="relative overflow-hidden py-8 sm:py-14 bg-dark-950 min-h-screen">
+      <CyberMesh variant="subtle" position="top-right" opacityClass="opacity-10 sm:opacity-15" />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Breadcrumb Navegacional Limpo */}
         <nav
           aria-label="Breadcrumb"

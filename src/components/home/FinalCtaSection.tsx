@@ -2,13 +2,15 @@ import React from "react";
 import Link from "next/link";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { generateGeneralWhatsAppLink } from "@/lib/whatsapp/generator";
+import { CyberMesh } from "@/components/ui/CyberMesh";
 
 export function FinalCtaSection() {
   const whatsappUrl = generateGeneralWhatsAppLink();
 
   return (
-    <section className="py-20 sm:py-28 border-b border-zinc-850 bg-dark-900/60">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+    <section className="relative overflow-hidden py-20 sm:py-28 border-b border-zinc-850 bg-dark-900/60">
+      <CyberMesh variant="watermark" position="center" opacityClass="opacity-15 sm:opacity-20" />
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
         <div className="space-y-3">
           <span className="text-[11px] font-mono tracking-widest text-zinc-400 uppercase">
             Catálogo Comercial Completo

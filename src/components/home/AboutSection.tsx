@@ -2,11 +2,13 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { CyberMesh } from "@/components/ui/CyberMesh";
 
 export function AboutSection() {
   return (
-    <section className="py-20 sm:py-28 border-b border-zinc-850 bg-dark-950">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden py-20 sm:py-28 border-b border-zinc-850 bg-dark-950">
+      <CyberMesh variant="corner" position="top-right" opacityClass="opacity-15 sm:opacity-20" />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Coluna Visual: Imagem Arquitetural com Respiro */}
           <div className="lg:col-span-6 relative">

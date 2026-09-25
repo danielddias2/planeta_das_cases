@@ -1,5 +1,6 @@
 import React from "react";
 import { Search, MessageSquare, Users, CheckCircle } from "lucide-react";
+import { CyberMesh } from "@/components/ui/CyberMesh";
 
 export function HowItWorksSection() {
   const steps = [
@@ -34,8 +35,9 @@ export function HowItWorksSection() {
   ];
 
   return (
-    <section className="py-20 sm:py-28 border-b border-zinc-850 bg-dark-900/40">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+    <section className="relative overflow-hidden py-20 sm:py-28 border-b border-zinc-850 bg-dark-900/40">
+      <CyberMesh variant="subtle" position="bottom-left" opacityClass="opacity-15 sm:opacity-20" />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
         {/* Cabeçalho da Seção */}
         <div className="text-center max-w-2xl mx-auto space-y-3">
           <span className="text-[11px] font-mono tracking-widest text-zinc-400 uppercase">

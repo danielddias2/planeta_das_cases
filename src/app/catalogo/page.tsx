@@ -5,6 +5,7 @@ import { ProductCard } from "@/components/catalog/ProductCard";
 import { CategoryFilter } from "@/components/catalog/CategoryFilter";
 import { DisponibilidadeStatus } from "@/types/product";
 import { Box } from "lucide-react";
+import { CyberMesh } from "@/components/ui/CyberMesh";
 
 export const metadata: Metadata = {
   title: "Catálogo Comercial de Produtos",
@@ -46,8 +47,9 @@ export default async function CatalogoPage({ searchParams }: CatalogoPageProps) 
   const activeCategoryInfo = categories.find((c) => c.slug === categoria);
 
   return (
-    <div className="py-14 sm:py-20 bg-dark-950 min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+    <div className="relative overflow-hidden py-14 sm:py-20 bg-dark-950 min-h-screen">
+      <CyberMesh variant="corner" position="top-right" opacityClass="opacity-15 sm:opacity-20" />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         {/* Cabeçalho da Página */}
         <div className="space-y-3 border-b border-zinc-850 pb-8">
           <div className="text-[11px] font-mono uppercase tracking-widest text-zinc-400">

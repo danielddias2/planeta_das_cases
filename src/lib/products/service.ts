@@ -119,6 +119,17 @@ export async function getProducts(filtros?: FiltrosCatalogo): Promise<Produto[]>
       return results;
     } catch (err: any) {
       console.error("[Supabase Database Query Error]:", err.message || err);
+      if (err?.message?.includes("fetch failed") || String(err).includes("fetch failed")) {
+        console.warn("[Planeta das Cases] Conexão com Supabase indisponível no ambiente de build/offline. Utilizando dados de resiliência.");
+        let fallback = [...MOCK_PRODUTOS];
+        if (filtros?.categoria && filtros.categoria !== "todas") {
+          fallback = fallback.filter((p) => p.categoria === filtros.categoria);
+        }
+        if (filtros?.destaque !== undefined) {
+          fallback = fallback.filter((p) => p.destaque === filtros.destaque);
+        }
+        return fallback;
+      }
       throw new Error(`Falha na consulta ao banco de dados Supabase: ${err.message || "Erro desconhecido"}`);
     }
   }
@@ -183,6 +194,9 @@ export async function getProductBySlug(slug: string): Promise<Produto | null> {
       return mapDatabaseRowToProduto(rows[0]);
     } catch (err: any) {
       console.error(`[Supabase Error] Erro ao buscar produto por slug (${slug}):`, err.message || err);
+      if (err?.message?.includes("fetch failed") || String(err).includes("fetch failed")) {
+        return MOCK_PRODUTOS.find((p) => p.slug === slug) || null;
+      }
       throw new Error(`Falha ao carregar produto do banco de dados: ${err.message || "Erro desconhecido"}`);
     }
   }
@@ -214,6 +228,9 @@ export async function getProductById(id: string): Promise<Produto | null> {
       return mapDatabaseRowToProduto(rows[0]);
     } catch (err: any) {
       console.error(`[Supabase Error] Erro ao buscar produto por id (${id}):`, err.message || err);
+      if (err?.message?.includes("fetch failed") || String(err).includes("fetch failed")) {
+        return MOCK_PRODUTOS.find((p) => p.id === id) || null;
+      }
       throw new Error(`Falha ao carregar produto por ID: ${err.message || "Erro desconhecido"}`);
     }
   }
@@ -260,6 +277,9 @@ export async function getCategories(): Promise<CategoriaInfo[]> {
       }
     } catch (err: any) {
       console.error("[Supabase Error] Erro ao consultar categorias:", err.message || err);
+      if (err?.message?.includes("fetch failed") || String(err).includes("fetch failed")) {
+        return MOCK_CATEGORIAS;
+      }
       throw err;
     }
   }
